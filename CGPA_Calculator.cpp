@@ -25,6 +25,10 @@ void update_subjects(vector<string>& subjects) {
     subjects.resize(n); // Resize the vector to fit the number of subjects
     for(int i = 0; i < n; i++) {
         cout << "Enter the name of subject " << i + 1 << ": ";
+        if (typeid(subjects[i]) != typeid(string)) {
+            cerr << "Invalid subject name entered." << endl;
+            return;
+        }
         cin >> subjects[i];
     }
 
@@ -74,6 +78,10 @@ void store_marks(const vector<string>& subjects, vector<double>& marks, vector<s
     grades.resize(subjects.size()); // Resize the grades vector to match subjects size
     for(size_t i = 0; i < subjects.size(); i++) {
         cout << "Enter the marks for " << subjects[i] << ": ";
+        if (marks[i] < 0 || marks[i] > 100) {
+            cerr << "Invalid marks entered." << endl;
+            return;
+        }
         cin >> marks[i];
     }
 
