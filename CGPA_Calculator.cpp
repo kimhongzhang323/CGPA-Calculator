@@ -11,6 +11,17 @@ void update_subjects(vector<string>& subjects) {
     int n;
     cin >> n;
 
+    if (n <= 0) {
+        cerr << "Invalid number of subjects entered." << endl;
+        return;
+    } else if (n > 10) {
+        cerr << "Maximum number of subjects allowed is 10." << endl;
+        return;
+    } else if (typeid(n) != typeid(int)) {
+        cerr << "Invalid number of subjects entered." << endl;
+        return;
+    }
+
     subjects.resize(n); // Resize the vector to fit the number of subjects
     for(int i = 0; i < n; i++) {
         cout << "Enter the name of subject " << i + 1 << ": ";
